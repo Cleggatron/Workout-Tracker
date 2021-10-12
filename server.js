@@ -5,17 +5,14 @@ const PORT = process.env.port || 3001;
 const app = express();
 
 //set up our middle wares
-app.use(express.json());
 app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
-//set up routing
-app.get("/", function(req, res){
-    res.sendFile("index.html")
-})
 
-app.get("/exercise", function(req, res){
-    res.sendFile("exercise.html")
-})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
