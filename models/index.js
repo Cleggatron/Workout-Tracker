@@ -1,4 +1,3 @@
-const Day = require("./day.js");
-const Exercise = require("./exercise.js")
+const Workout = require("./workout.js")
 
-module.exports = {Day, Exercise};
+module.exports = {Workout};
