@@ -1,10 +1,10 @@
 const router = require("express").Router()
-const db = require("../../models");
+const { Workout } = require("../../models");
 
 router.get("/workouts", async (req, res) => {
-    db.Workout.find({}).then(dbWorkouts => {
-        console.log(dbWorkouts)
-        res.status(200).json(dbWorkouts)
+    Workout.find({}).then(data => {
+        console.log(data)
+        res.status(200).end()
     }).catch(err => {
         res.status(400).json(err)
     })
