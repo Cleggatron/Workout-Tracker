@@ -19,7 +19,6 @@ router.get("/workouts", (req, res) => {
 })
 
 router.post("/workouts", (req, res) => {
-    console.log(req.body);
     Workout.create(req.body).then(data => {
         res.json(data)
     }).catch(err => {
@@ -55,7 +54,6 @@ router.get("/workouts/range", (req, res) => {
     .limit(7)
     .sort({day: 1})
     .then(data => {
-        console.log(data)
         res.status(200).json(data)
     }).catch(err => {
         res.status(400).json(err)
