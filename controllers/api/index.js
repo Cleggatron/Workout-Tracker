@@ -6,7 +6,8 @@ router.get("/workouts", (req, res) => {
         [
             {
                 $addFields: {
-                    totalDuration: {$sum: "$exercises.duration"}
+                    totalDuration: {$sum: "$exercises.duration"},
+                    totalWeight: {$sum: "$exercises.weight"}
                 }
             }
         ]
@@ -34,4 +35,22 @@ router.put("/workouts/:id", (req, res) => {
     })
 })
 
+router.get("/workouts/range", (req, res) => {
+    console.log("request recieved")
+    Workout.aggregate(
+        [
+            {
+                $addFields: {
+                    totalDuration: {$sum: "$exercises.duration"}, 
+                    totalWeight: {$sum: "$exercises.weight"}
+                }
+            }
+        ]
+    ).then(data => {
+        console.log(data)
+        res.status(200).json(data)
+    }).catch(err => {
+        res.status(400).json(err)
+    })
+})
 module.exports = router;
