@@ -17,7 +17,7 @@ router.get("/workouts", (req, res) => {
     })
 })
 
-router.post("/workouts", async (req, res) => {
+router.post("/workouts", (req, res) => {
     console.log(req.body);
     Workout.create(req.body).then(data => {
         res.json(data)
@@ -26,6 +26,12 @@ router.post("/workouts", async (req, res) => {
     })
 })
 
-router.put("/")
+router.put("/workouts/:id", (req, res) => {
+    Workout.findOneAndUpdate({id: req.params.id}, req.body).then(data => {
+        res.status(200).json(data);
+    }).catch(err => {
+        res.status(400).json(err);
+    })
+})
 
 module.exports = router;
