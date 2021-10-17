@@ -35,8 +35,8 @@ router.put("/workouts/:id", (req, res) => {
     })
 })
 
+//the .sort .limit .sort will allow us to select the 7 most recent entries. then resort them to provide left to right data on the graph
 router.get("/workouts/range", (req, res) => {
-    console.log("request recieved")
     Workout.aggregate(
         [
             {
@@ -46,7 +46,11 @@ router.get("/workouts/range", (req, res) => {
                 }
             }
         ]
-    ).then(data => {
+    )
+    .sort({day: -1})
+    .limit(7)
+    .sort({day: 1})
+    .then(data => {
         console.log(data)
         res.status(200).json(data)
     }).catch(err => {
