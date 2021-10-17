@@ -28,11 +28,11 @@
 
   ## Usage
 
-  ![Homepage](./assets/Screenshot1.png)
+  ![Homepage](./assets/Screenshot1.PNG)
 
-  ![Stats Page](./assets/Screenshot2.png)
+  ![Stats Page](./assets/Screenshot2.PNG)
 
-  ![Workout builder page](./assets/Screenshot3.png)
+  ![Workout builder page](./assets/Screenshot3.PNG)
 
 
   Once the application is running (locally or deployed on the web), one can click the continue workout button, to add exercises to a current workout. Alternatively the New Workout button will allow the user to create a brand new workout from scratch. Finally the user can click the stats button to see the details of the past 7 workouts displayed graphically.
