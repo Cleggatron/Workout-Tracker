@@ -28,7 +28,7 @@ router.post("/workouts", (req, res) => {
 })
 
 router.put("/workouts/:id", (req, res) => {
-    Workout.findOneAndUpdate({_Objectid: req.params.id}, req.body).then(data => {
+    Workout.findOneAndUpdate({_id: req.params.id}, req.body).then(data => {
         res.status(200).json(data);
     }).catch(err => {
         res.status(400).json(err);
